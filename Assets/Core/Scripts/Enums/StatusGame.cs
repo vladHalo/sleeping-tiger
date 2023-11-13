@@ -1,6 +1,5 @@
 public enum StatusGame
 {
-    MoveCamera,
-    ReadyGun,
-    FireGun
+    Play,
+    Pause
 }
