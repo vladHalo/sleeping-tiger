@@ -1,5 +1,5 @@
 public enum StatusGame
 {
     Play,
-    Pause
+    Lose
 }

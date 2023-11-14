@@ -10,6 +10,7 @@ namespace Core.Scripts.Bird
         [SerializeField] private Factory _birdFactory;
         [SerializeField] private List<Transform> _spawnBirdPoint;
         [SerializeField] private float _minDelay, _maxDelay;
+        [SerializeField] private List<MoveBird> _moveBirds;
 
         [Inject] private GameManager _gameManager;
 
@@ -20,14 +21,55 @@ namespace Core.Scripts.Bird
 
         private IEnumerator Spawn()
         {
-            while (true)
+            while (_gameManager.statusGame == StatusGame.Play)
             {
-                MoveBird moveBird = _birdFactory.Create<MoveBird>(new Vector3());
-                moveBird.SetPointMove(_spawnBirdPoint[Random.Range(0, _spawnBirdPoint.Count - 1)],
-                    _gameManager.tigerStateManager.pointBirdsFinish, _gameManager);
-                _gameManager.moveBirds.Add(moveBird);
                 yield return new WaitForSeconds(Random.Range(_minDelay, _maxDelay));
+                var point = _spawnBirdPoint[Random.Range(0, _spawnBirdPoint.Count - 1)];
+                MoveBird moveBird = _birdFactory.Create<MoveBird>(point.position);
+                moveBird.SetPointMove(point, _gameManager.tigerStateManager.pointBirdsFinish, _gameManager);
+                _moveBirds.Add(moveBird);
             }
+        }
+
+        public void RemoveBird(MoveBird moveBird)
+        {
+            _moveBirds.Remove(moveBird);
+        }
+
+        public Transform GetBird(float power)
+        {
+            if (_gameManager.abilityView.withoutPower)
+            {
+                return _moveBirds[0].transform;
+            }
+
+            Transform bird = null;
+            float boundary;
+            float max = 0;
+
+            switch (power)
+            {
+                case < .333f:
+                    boundary = .333f;
+                    break;
+                case < .666f:
+                    boundary = .666f;
+                    break;
+                default:
+                    boundary = 1;
+                    break;
+            }
+
+            foreach (var t in _moveBirds)
+            {
+                if (t.time < boundary && t.time > max)
+                {
+                    max = t.time;
+                    bird = t.transform;
+                }
+            }
+
+            return bird;
         }
     }
 }

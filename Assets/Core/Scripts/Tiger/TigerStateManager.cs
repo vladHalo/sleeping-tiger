@@ -2,6 +2,7 @@ using Core.Scripts.Interfaces;
 using Core.Scripts.Tiger.Models;
 using Core.Scripts.Tiger.States;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Scripts.Tiger
 {
@@ -11,16 +12,17 @@ namespace Core.Scripts.Tiger
         public SleepState sleepState;
         public CryState cryState;
 
-        [SerializeField] private Animator _animator;
-
         [SerializeField] private SleepModel _sleepModel;
+        [SerializeField] private CryModel _cryModel;
+
+        [Inject] private GameManager _gameManager;
 
         private IState _currentState;
 
         private void Start()
         {
             sleepState = new SleepState(this, _sleepModel);
-            cryState = new CryState(this, _animator);
+            cryState = new CryState(this, _cryModel, _gameManager);
             _currentState = sleepState;
         }
 

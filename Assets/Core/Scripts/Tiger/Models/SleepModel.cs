@@ -7,6 +7,6 @@ namespace Core.Scripts.Tiger.Models
     public class SleepModel
     {
         public float hp;
-        public HPTigerView hpTigerView;
+        public BarView barView;
     }
 }

@@ -31,12 +31,13 @@ namespace Core.Scripts.Tiger.States
         {
             while (_sleepModel.hp > 0)
             {
-                if (_sleepModel.hp <= 0)
-                    _tiger.SetState(_tiger.cryState);
-
                 yield return new WaitForSeconds(1);
                 _sleepModel.hp -= .01f;
-                _sleepModel.hpTigerView.SetValue(_sleepModel.hp);
+                _sleepModel.barView.SetValue(_sleepModel.hp);
+                if (_sleepModel.hp <= 0)
+                {
+                    _tiger.SetState(_tiger.cryState);
+                }
             }
         }
     }

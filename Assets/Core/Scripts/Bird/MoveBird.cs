@@ -4,22 +4,22 @@ namespace Core.Scripts.Bird
 {
     public class MoveBird : MonoBehaviour
     {
+        public float time;
+
         [SerializeField] private float _speed;
         [SerializeField] private Vector3 _height;
         [SerializeField] private float _timeDamage;
-        private float _time;
         private Transform _firstPoint, _lastPoint;
 
-        private float _radius = 1.5f;
-        private float _angle;
+        private float _centerLineX;
 
         private GameManager _gameManager;
 
         private void Update()
         {
-            if (_time >= .9f)
+            if (time >= .9f)
             {
-                CircleMove();
+                LineMove();
                 return;
             }
 
@@ -31,7 +31,7 @@ namespace Core.Scripts.Bird
             _firstPoint = firstPoint;
             _lastPoint = lastPoint;
             transform.position = firstPoint.position;
-            _time = 0;
+            time = 0;
             _gameManager = gameManager;
         }
 
@@ -43,30 +43,32 @@ namespace Core.Scripts.Bird
                     _firstPoint.position.z),
                 new Vector3(_lastPoint.position.x + _height.x, _lastPoint.position.y + _height.y,
                     _lastPoint.position.z),
-                _lastPoint.position, _time);
+                _lastPoint.position, time);
 
-            _time = Mathf.Lerp(_time, 1f, _speed * Time.deltaTime);
-            if (_time < _timeDamage) return;
+            time = Mathf.Lerp(time, 1f, _speed * Time.deltaTime);
+            if (time < _timeDamage) return;
 
             if (_gameManager != null)
             {
                 _gameManager.tigerStateManager.sleepState.StartGetDamage();
                 _gameManager = null;
             }
+
+            _centerLineX = transform.position.x;
         }
 
-        private void CircleMove()
+        private void LineMove()
         {
-            float x = Mathf.Cos(_angle) * _radius;
+            Vector3 currentPosition = transform.position;
 
-            transform.position = new Vector3(x, transform.position.y, transform.position.z);
-
-            _angle += _speed * Time.deltaTime;
-
-            if (_angle >= 2 * Mathf.PI)
+            Vector3 pos = transform.position;
+            transform.position = new Vector3(pos.x + _speed * Time.deltaTime, pos.y, pos.z);
+            if (transform.position.x > _centerLineX + 1.5f)
             {
-                _angle = 0f;
+                currentPosition.x = -1.5f;
             }
+
+            transform.position = currentPosition;
         }
     }
 }

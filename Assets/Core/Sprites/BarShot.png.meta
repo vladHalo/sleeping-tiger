@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86d28417c56229e4e9acfff1d1150d11
+guid: 0547d504ba2d8544098cb0a73a0ab15e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -127,66 +127,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Power_2
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 248
-        width: 247
-        height: 143
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b43d15be8079a24aa751e9c4754f383
-      internalID: -1903301146
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Power_4
-      rect:
-        serializedVersion: 2
-        x: 317
-        y: 30
-        width: 338
-        height: 384
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51e1d0f4f65cf044e95647ca93ab84bd
-      internalID: -952528607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b5e0a2cd7c134ac47a0b3189ad037143
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Power_0: -235410327
-      Power_1: 701785050
-      Power_2: -1903301146
-      Power_3: 1036236526
-      Power_4: -952528607
-      Power_5: -1181051482
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
