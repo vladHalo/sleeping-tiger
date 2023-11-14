@@ -17,7 +17,8 @@ namespace Core.Scripts.Player.Bullet
                 return;
 
             Bullet bullet = _bulletFactory.Create<Bullet>(aim.position);
-            bullet.Init(_gameManager, target);
+            bullet.Init(_gameManager, target.transform);
+            _gameManager.spawnBird.RemoveBird(target);
             LeanPool.Despawn(bullet, 7);
         }
     }

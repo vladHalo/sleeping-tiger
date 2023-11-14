@@ -36,14 +36,15 @@ namespace Core.Scripts.Bird
             _moveBirds.Remove(moveBird);
         }
 
-        public Transform GetBird(float power)
+        public MoveBird GetBird(float power)
         {
             if (_gameManager.abilityView.withoutPower)
             {
-                return _moveBirds[0].transform;
+                if (_moveBirds.Count > 0) return _moveBirds[0];
+                return null;
             }
 
-            Transform bird = null;
+            MoveBird bird = null;
             float boundary;
             float max = 0;
 
@@ -65,7 +66,7 @@ namespace Core.Scripts.Bird
                 if (t.time < boundary && t.time > max)
                 {
                     max = t.time;
-                    bird = t.transform;
+                    bird = t;
                 }
             }
 

@@ -31,7 +31,6 @@ namespace Core.Scripts.Player.Bullet
             if (other.TryGetComponent(out MoveBird moveBird))
             {
                 _gameManager.birdCountView.AddCount();
-                _gameManager.spawnBird.RemoveBird(moveBird);
                 LeanPool.Despawn(moveBird.gameObject);
                 LeanPool.Despawn(gameObject);
             }
