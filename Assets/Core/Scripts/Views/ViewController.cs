@@ -67,6 +67,6 @@ namespace Core.Scripts.Views
             image.sprite = sprites[index];
         }
 
-        private void RestartLevel() => SceneManager.LoadScene(SceneManager.sceneCount - 1);
+        private void RestartLevel() => SceneManager.LoadScene(Str.Main);
     }
 }
