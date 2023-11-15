@@ -23,11 +23,11 @@ namespace Core.Scripts.Bird
         {
             while (_gameManager.statusGame == StatusGame.Play)
             {
-                yield return new WaitForSeconds(Random.Range(_minDelay, _maxDelay));
                 var point = _spawnBirdPoint[Random.Range(0, _spawnBirdPoint.Count - 1)];
                 MoveBird moveBird = _birdFactory.Create<MoveBird>(point.position);
                 moveBird.SetPointMove(point, _gameManager.tigerStateManager.pointBirdsFinish, _gameManager);
                 _moveBirds.Add(moveBird);
+                yield return new WaitForSeconds(Random.Range(_minDelay, _maxDelay));
             }
         }
 

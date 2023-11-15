@@ -16,13 +16,14 @@ namespace Core.Scripts.Tiger
         [SerializeField] private CryModel _cryModel;
 
         [Inject] private GameManager _gameManager;
-
+        [Inject] private AudioManager _audioManager;
+        
         private IState _currentState;
 
         private void Start()
         {
             sleepState = new SleepState(this, _sleepModel);
-            cryState = new CryState(this, _cryModel, _gameManager);
+            cryState = new CryState(this, _cryModel, _gameManager, _audioManager);
             _currentState = sleepState;
         }
 

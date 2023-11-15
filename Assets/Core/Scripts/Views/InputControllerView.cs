@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Core.Scripts.Views
 {
@@ -9,9 +8,10 @@ namespace Core.Scripts.Views
     {
         public Action<float> ShotAction;
 
-        [SerializeField] private Button _buttonShot;
+        [SerializeField] private GameObject _buttonShot;
         [SerializeField] private EventTrigger _eventTrigger;
         [SerializeField] private BarView _barView;
+        [SerializeField] private OnBoarding _onBoarding;
 
         private bool _isButtonHeld;
         private float _buttonHeldTime;
@@ -38,26 +38,29 @@ namespace Core.Scripts.Views
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (_buttonShot.interactable == false) return;
+            if (_buttonShot.activeSelf == false) return;
 
             _isButtonHeld = true;
             _buttonHeldTime = 0;
             _barView.SetValue(0);
+
+            if (!PlayerPrefs.HasKey(Str.Board))
+                _onBoarding.NextStep();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (_buttonShot.interactable == false) return;
+            if (_buttonShot.activeSelf == false) return;
 
             _isButtonHeld = false;
             _buttonHeldTime = 0;
 
             ShotAction?.Invoke(_barView.GetValue());
             _barView.SetValue(0);
-            _buttonShot.interactable = false;
+            _buttonShot.SetActive(false);
             Invoke(nameof(OnButtonShot), .75f);
         }
 
-        private void OnButtonShot() => _buttonShot.interactable = true;
+        private void OnButtonShot() => _buttonShot.SetActive(true);
     }
 }

@@ -129,34 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2
-      rect:
-        serializedVersion: 2
-        x: 514
-        y: 365
-        width: 171
-        height: 139
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2c97fd6404f4414ab9859fdcc14a1c7
-      internalID: -214560547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: 1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 275
-        width: 462
-        height: 227
+        x: 31
+        y: 600
+        width: 552
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3535c065fb38b14789e24a4d73f7cb8
-      internalID: 1249556021
+      spriteID: d98fc875de0e6ac4b80a227da5fe51f8
+      internalID: -1799951923
       vertices: []
       indices: 
       edges: []
@@ -174,10 +153,10 @@ TextureImporter:
       name: 3
       rect:
         serializedVersion: 2
-        x: 825
-        y: 208
-        width: 860
-        height: 297
+        x: 709
+        y: 538
+        width: 138
+        height: 138
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8534a4c912300f54989409ac93eb336d
-      internalID: -1117192272
+      spriteID: 9f030692239abdb4fb2ed82664066cea
+      internalID: 633606939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4
+      name: PauseOn
       rect:
         serializedVersion: 2
-        x: 22
-        y: 18
-        width: 490
-        height: 222
+        x: 862
+        y: 556
+        width: 138
+        height: 138
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8634bcf829ae0e449e94bbc3825af8f
-      internalID: -1011859213
+      spriteID: f02b1a38eea3d7940a40776ca723f3cf
+      internalID: 1728256200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 5
+      name: 2
       rect:
         serializedVersion: 2
-        x: 543
-        y: 30
-        width: 207
-        height: 210
+        x: 21
+        y: 452
+        width: 572
+        height: 126
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,8 +206,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e53d96cb93133c74ea22444be1cb19bc
-      internalID: -1923318617
+      spriteID: 18799fc0d587fe8408d390697400d67b
+      internalID: -566452969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseOff
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 359
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3660e93262a4feb4cb784a34d493be07
+      internalID: -66215408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoundOff
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 311
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e693cc7bca313314bb1c7d202dac5f3b
+      internalID: 698970087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SoundOn
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 311
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a70325c67c9ea944680145e90fa62b30
+      internalID: -1661484677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 12
+        width: 277
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b969dd664182c74b9cbc3173afc0f0c
+      internalID: 1641025295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 10
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 215
+        width: 708
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0b97a49c8bcc14499b8ba015026652
+      internalID: 166277651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 6
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 362
+        width: 169
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85e20416461fce47be47c58651901aa
+      internalID: -1105116846
       vertices: []
       indices: 
       edges: []
@@ -244,13 +349,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      1: 1249556021
-      2: -214560547
-      3: -1117192272
-      4: -1011859213
-      5: -1923318617
-      Menu_0: -1799951923
-      Menu_1: 633606939
+      1: -1799951923
+      10: 166277651
+      2: -566452969
+      3: 633606939
+      6: 823538475
+      9: 1641025295
       Menu_10: 1310631178
       Menu_11: 344438658
       Menu_12: 1336711410
@@ -261,18 +365,54 @@ TextureImporter:
       Menu_17: 572431071
       Menu_18: -120561579
       Menu_19: 986516202
-      Menu_2: 823538475
       Menu_20: -1843238851
       Menu_21: -473544528
       Menu_22: 1497163581
       Menu_23: -340512551
       Menu_24: -1533025790
+      Menu_26: -690511163
       Menu_27: -288667745
       Menu_28: -1423792954
-      Menu_3: 1728256200
+      Menu_29: 282439764
+      Menu_30: 146620037
+      Menu_31: 1135457180
+      Menu_34: -334088385
+      Menu_35: -996663526
+      Menu_36: -432924581
+      Menu_37: 557966865
+      Menu_38: 1326599015
+      Menu_39: 1574030469
       Menu_4: -205420172
+      Menu_40: -2099610200
+      Menu_41: -462209888
+      Menu_42: -737693295
+      Menu_45: 1142407491
+      Menu_46: -1986179062
+      Menu_47: -2066620964
+      Menu_48: 215142334
+      Menu_49: -1251220807
+      Menu_5: -1087527180
+      Menu_50: -1512065202
+      Menu_51: 1409934522
+      Menu_52: -1431411901
+      Menu_53: 1348093455
+      Menu_54: -159402296
+      Menu_55: 978609682
+      Menu_56: -669908799
+      Menu_57: -624360730
+      Menu_58: -673413909
+      Menu_59: 1320480548
       Menu_6: -495214755
+      Menu_60: 1670046602
+      Menu_61: 1731733275
+      Menu_62: -1188662300
+      Menu_63: -1119993127
+      Menu_7: 332404800
       Menu_8: -28268643
+      PauseOff: -66215408
+      PauseOn: 1728256200
+      SoundOff: 698970087
+      SoundOn: -1661484677
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

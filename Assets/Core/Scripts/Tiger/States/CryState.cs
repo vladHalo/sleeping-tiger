@@ -12,12 +12,14 @@ namespace Core.Scripts.Tiger.States
         private readonly CryModel _cryModel;
 
         private GameManager _gameManager;
+        private AudioManager _audioManager;
 
-        public CryState(TigerStateManager tiger, CryModel cryModel, GameManager gameManager)
+        public CryState(TigerStateManager tiger, CryModel cryModel, GameManager gameManager, AudioManager audioManager)
         {
             _tiger = tiger;
             _cryModel = cryModel;
             _gameManager = gameManager;
+            _audioManager = audioManager;
         }
 
         public void EnterState()
@@ -26,6 +28,7 @@ namespace Core.Scripts.Tiger.States
             _gameManager.ChangeStatus();
             _cryModel.animator.SetTrigger(Str.Cry);
             _tiger.StartCoroutine(Lose());
+            _audioManager.PlaySoundEffect(_cryModel.audioClip);
         }
 
         public void UpdateState()
