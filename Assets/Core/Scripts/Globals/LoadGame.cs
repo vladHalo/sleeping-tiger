@@ -36,7 +36,7 @@ public class LoadGame : MonoBehaviour
 
         while (_progress.value != 1)
         {
-            _progress.value += .001f;
+            _progress.value += .01f;
             yield return new WaitForSeconds(.001f);
         }
 
