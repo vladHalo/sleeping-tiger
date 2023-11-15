@@ -14,14 +14,14 @@ namespace Core.Scripts.Views
             if (PlayerPrefs.HasKey(Str.BestScore))
             {
                 _bestCount = PlayerPrefs.GetInt(Str.BestScore);
-                _bestScore.text = $"Best score: {_bestCount}";
+                _bestScore.text = $"{_bestCount}";
             }
         }
 
         public void AddCount()
         {
             _count += _abilityView.x2;
-            _birdsCountUI.text = $"Birds: {_count}";
+            _birdsCountUI.text = $"{_count}";
             if (_count > _bestCount)
                 PlayerPrefs.SetInt(Str.BestScore, _count);
         }
