@@ -14,17 +14,20 @@ namespace Core.Scripts.Tiger
 
         [SerializeField] private SleepModel _sleepModel;
         [SerializeField] private CryModel _cryModel;
+        [SerializeField] private GameObject[] _mainAnimalsScin;
 
         [Inject] private GameManager _gameManager;
-        [Inject] private AudioManager _audioManager;
-        
+
         private IState _currentState;
 
         private void Start()
         {
             sleepState = new SleepState(this, _sleepModel);
-            cryState = new CryState(this, _cryModel, _gameManager, _audioManager);
+            cryState = new CryState(this, _cryModel, _gameManager, AudioManager.instance);
             _currentState = sleepState;
+            _mainAnimalsScin[0].SetActive(false);
+            _mainAnimalsScin[_gameManager.level].SetActive(true);
+            _cryModel.animator = _mainAnimalsScin[_gameManager.level].GetComponent<Animator>();
         }
 
         private void Update()

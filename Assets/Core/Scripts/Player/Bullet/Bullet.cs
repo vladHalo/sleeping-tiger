@@ -28,9 +28,11 @@ namespace Core.Scripts.Player.Bullet
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out MoveBird moveBird))
+            if (other.TryGetComponent(out MoveAnimal moveBird))
             {
-                _gameManager.birdCountView.AddCount();
+                AudioManager.instance.PlaySoundEffect(SoundType.DeadAnimal);
+                _gameManager.animalCountView.AddCount();
+                _gameManager.storeLogic.AddMoney(1);
                 LeanPool.Despawn(moveBird.gameObject);
                 LeanPool.Despawn(gameObject);
             }

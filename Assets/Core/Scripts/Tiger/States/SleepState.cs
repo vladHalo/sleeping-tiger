@@ -1,7 +1,5 @@
-using System.Collections;
 using Core.Scripts.Interfaces;
 using Core.Scripts.Tiger.Models;
-using UnityEngine;
 
 namespace Core.Scripts.Tiger.States
 {
@@ -25,19 +23,15 @@ namespace Core.Scripts.Tiger.States
         {
         }
 
-        public void StartGetDamage() => _tiger.StartCoroutine(GetDamage());
+        public float GetHP() => _sleepModel.hp;
 
-        private IEnumerator GetDamage()
+        public void SetDamage()
         {
-            while (_sleepModel.hp > 0)
+            _sleepModel.hp -= .01f;
+            _sleepModel.barView.SetValue(_sleepModel.hp);
+            if (_sleepModel.hp <= 0)
             {
-                yield return new WaitForSeconds(1);
-                _sleepModel.hp -= .01f;
-                _sleepModel.barView.SetValue(_sleepModel.hp);
-                if (_sleepModel.hp <= 0)
-                {
-                    _tiger.SetState(_tiger.cryState);
-                }
+                _tiger.SetState(_tiger.cryState);
             }
         }
     }

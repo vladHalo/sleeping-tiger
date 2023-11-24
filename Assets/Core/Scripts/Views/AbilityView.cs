@@ -8,7 +8,7 @@ namespace Core.Scripts.Views
     {
         public int x2 = 1;
         public bool withoutPower;
-
+        
         [SerializeField] private Image _abilityX2Img, _abilityWithoutPowerImg;
         [SerializeField] private Button _abilityX2Btn, _abilityWithoutPowerBtn;
 
@@ -17,7 +17,7 @@ namespace Core.Scripts.Views
             _abilityX2Btn.onClick.AddListener(X2);
             _abilityWithoutPowerBtn.onClick.AddListener(WithoutPower);
         }
-
+        
         private void X2()
         {
             x2++;

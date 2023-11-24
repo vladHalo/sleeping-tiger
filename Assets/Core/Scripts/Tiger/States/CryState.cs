@@ -25,10 +25,10 @@ namespace Core.Scripts.Tiger.States
         public void EnterState()
         {
             _tiger.StopAllCoroutines();
-            _gameManager.ChangeStatus();
+            _gameManager.statusGame=StatusGame.Stop;
             _cryModel.animator.SetTrigger(Str.Cry);
             _tiger.StartCoroutine(Lose());
-            _audioManager.PlaySoundEffect(_cryModel.audioClip);
+            _audioManager.PlaySoundEffect(SoundType.Cry);
         }
 
         public void UpdateState()
@@ -38,7 +38,7 @@ namespace Core.Scripts.Tiger.States
         private IEnumerator Lose()
         {
             yield return new WaitForSeconds(1.5f);
-            _cryModel.viewController.OpenLosePanel();
+            _cryModel.actionPanelManager.OpenPanels(0);
         }
     }
 }

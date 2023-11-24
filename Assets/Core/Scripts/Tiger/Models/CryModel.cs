@@ -8,7 +8,6 @@ namespace Core.Scripts.Tiger.Models
     public class CryModel
     {
         public Animator animator;
-        public ViewController viewController;
-        public AudioClip audioClip;
+        public ActionPanelManager actionPanelManager;
     }
 }

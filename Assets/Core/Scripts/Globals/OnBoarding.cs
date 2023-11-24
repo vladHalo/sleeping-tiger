@@ -1,5 +1,7 @@
+using Core.Scripts.Views;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class OnBoarding : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class OnBoarding : MonoBehaviour
     [SerializeField] private BoardStep[] _steps;
 
     private int _stepIndex;
+    [Inject] private GameManager _gameManager;
 
     private void Start()
     {
@@ -26,7 +29,10 @@ public class OnBoarding : MonoBehaviour
     {
         _stepIndex++;
         if (_stepIndex == _steps.Length - 1)
+        {
+            _gameManager.statusGame = StatusGame.Play;
             PlayerPrefs.SetInt(Str.Board, 1);
+        }
 
         _steps[_stepIndex].ActiveStep();
     }

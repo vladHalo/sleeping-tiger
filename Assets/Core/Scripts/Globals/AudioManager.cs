@@ -1,46 +1,59 @@
+using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager instance;
+    
     [SerializeField] private Button[] _buttons;
 
     [SerializeField] private AudioSource _musicSource;
-    [SerializeField] private AudioSource _soundEffectSource;
-
-    private bool _isMusic, _isSound;
-
+    [SerializeField] private AudioSource[] _soundEffects;
+    
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void Start()
     {
-        _buttons[0].onClick.AddListener(() => SetVolume(ref _isMusic, Str.Music, _musicSource));
-        _buttons[1].onClick.AddListener(() => SetVolume(ref _isSound, Str.Sound, _soundEffectSource));
+        _buttons[0].onClick.AddListener(() => SetVolume(Str.Music, _musicSource));
+        _buttons[1].onClick.AddListener(() => SetVolume(Str.Sound, _soundEffects));
 
         if (PlayerPrefs.HasKey(Str.Music))
         {
-            var value = PlayerPrefs.GetInt(Str.Music);
-            _isMusic = value == 0;
-            _musicSource.volume = value;
+            _musicSource.volume = PlayerPrefs.GetInt(Str.Music);
         }
 
         if (PlayerPrefs.HasKey(Str.Sound))
         {
             var value = PlayerPrefs.GetInt(Str.Sound);
-            _isSound = value == 0;
-            _soundEffectSource.volume = value;
+            _soundEffects.ForEach(x => x.volume = value);
         }
     }
 
-    public void PlaySoundEffect(AudioClip clip)
+    public void PlaySoundEffect(SoundType soundType)
     {
-        _soundEffectSource.clip = clip;
-        _soundEffectSource.Play();
+        _soundEffects[(int)soundType].Play();
     }
 
-    private void SetVolume(ref bool value, string musicSound, AudioSource manager)
+    private void SetVolume(string musicSound, params AudioSource[] manager)
     {
-        manager.volume = value ? 1 : 0;
-        var index = value ? 1 : 0;
-        PlayerPrefs.SetInt(musicSound, index);
-        value = !value;
+        int indexVolume = 1;
+        if (PlayerPrefs.HasKey(musicSound))
+            indexVolume = PlayerPrefs.GetInt(musicSound);
+        indexVolume = (indexVolume == 0) ? 1 : 0;
+        manager.ForEach(x => x.volume = indexVolume);
+        PlayerPrefs.SetInt(musicSound, indexVolume);
     }
 }

@@ -1,6 +1,7 @@
 using Core.Scripts.Player.Bullet;
 using Core.Scripts.Views;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Core.Scripts.Player
@@ -8,12 +9,9 @@ namespace Core.Scripts.Player
     public class PlayerShot : MonoBehaviour
     {
         [SerializeField] private Transform _aim;
-        [SerializeField] private SpawnBullet _spawnBullet;
+        [SerializeField] private FactoryBullet _factoryBullet;
         [SerializeField] private InputControllerView _input;
 
-        [SerializeField] private AudioClip _audioClip;
-        [Inject] private AudioManager _audioManager;
-        
         private void Start()
         {
             _input.ShotAction += Shot;
@@ -21,8 +19,8 @@ namespace Core.Scripts.Player
 
         private void Shot(float power)
         {
-            _spawnBullet.Spawn(_aim, power);
-            _audioManager.PlaySoundEffect(_audioClip);
+            _factoryBullet.Spawn(_aim, power);
+            AudioManager.instance.PlaySoundEffect(SoundType.Shot);
         }
 
         private void OnDisable()

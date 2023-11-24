@@ -58,7 +58,7 @@ namespace Core.Scripts.Views
             ShotAction?.Invoke(_barView.GetValue());
             _barView.SetValue(0);
             _buttonShot.SetActive(false);
-            Invoke(nameof(OnButtonShot), .75f);
+            Invoke(nameof(OnButtonShot), 1.1f);
         }
 
         private void OnButtonShot() => _buttonShot.SetActive(true);
