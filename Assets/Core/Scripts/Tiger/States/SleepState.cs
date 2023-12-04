@@ -23,6 +23,13 @@ namespace Core.Scripts.Tiger.States
         {
         }
 
+        public void AddHP(float index)
+        {
+            _sleepModel.hp += index;
+            if (_sleepModel.hp > 1)
+                _sleepModel.hp = 1;
+        }
+
         public float GetHP() => _sleepModel.hp;
 
         public void SetDamage()

@@ -15,8 +15,11 @@ namespace Core.Scripts.Views
 
         [Inject] private GameManager _gameManager;
 
+        public int indexPointAdd;
+        
         private void Start()
         {
+            indexPointAdd = 1;
             if (PlayerPrefs.HasKey(Str.BestScore))
             {
                 _bestCount = PlayerPrefs.GetInt(Str.BestScore);
@@ -32,7 +35,7 @@ namespace Core.Scripts.Views
         public void AddCount()
         {
             float finishScore = _gameManager.GetLevelScoreForWin();
-            _count += _gameManager.abilityView.x2;
+            _count += indexPointAdd;
             _progressLevel.fillAmount = (_count - _startCount) / (finishScore - _startCount);
             _animalsCountUI.text = _count.ToString();
             if (_count > _bestCount)

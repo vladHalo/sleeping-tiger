@@ -8,6 +8,8 @@ namespace Core.Scripts.Bird
 {
     public class FactoryAnimal : MonoBehaviour
     {
+        public bool withoutPower;
+        
         [SerializeField] private Factory _animalFactory;
         [SerializeField] private List<Transform> _spawnAnimalPoint;
         [SerializeField] private float _minDelay, _maxDelay;
@@ -52,7 +54,7 @@ namespace Core.Scripts.Bird
 
         public MoveAnimal GetBird(float power)
         {
-            if (_gameManager.abilityView.withoutPower)
+            if (withoutPower)
             {
                 if (_moveAnimals.Count > 0) return _moveAnimals[0];
                 return null;

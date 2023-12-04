@@ -6,11 +6,11 @@ namespace Core.Scripts.Bird
     public class MoveAnimal : MonoBehaviour
     {
         public float time;
-
+        public ParticleSystem _particle;
+        
         [SerializeField] private float _speed;
         [SerializeField] private Vector3 _height;
         [SerializeField] private float _timeDamage;
-        [SerializeField] private GameObject[] _animalsScin;
         private Transform _firstPoint, _lastPoint;
         private bool _isFinish;
 
@@ -41,8 +41,6 @@ namespace Core.Scripts.Bird
             transform.position = firstPoint.position;
             time = 0;
             _gameManager = gameManager;
-            _animalsScin[0].SetActive(false);
-            _animalsScin[gameManager.level].SetActive(true);
         }
 
         private void BezierMove()
@@ -61,6 +59,8 @@ namespace Core.Scripts.Bird
             if (_isFinish == false)
             {
                 StartCoroutine(SetDamage());
+                _particle.gameObject.SetActive(true);
+                _particle.Play();
                 _isFinish = true;
             }
 

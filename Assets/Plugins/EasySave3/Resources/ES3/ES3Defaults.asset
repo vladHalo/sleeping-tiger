@@ -42,6 +42,7 @@ MonoBehaviour:
     - Lofelt.NiceVibrations
     - ColoredHeaderCreator
     - HierarchyIcons
+    - Assembly-CSharp-firstpass
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - ColoredHeaderCreator.Editor
     - ToonyColorsPro.Editor

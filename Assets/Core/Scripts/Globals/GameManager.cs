@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core.Scripts.Bird;
 using Core.Scripts.Store;
 using Core.Scripts.Tiger;
@@ -12,13 +13,18 @@ public class GameManager : MonoBehaviour
     public TigerStateManager tigerStateManager;
     public FactoryAnimal factoryAnimal;
     public AnimalCountView animalCountView;
-    public AbilityView abilityView;
     public StoreLogic storeLogic;
     public StatusGame statusGame;
+    [SerializeField] private ActionPanelManager _actionPanelManager;
+
+    [HideInInspector] public int money;
+    public List<Text> texts;
 
     [Header("Level")] public Text levelTextUI;
     public int level;
     public int levelText;
+    public ParticleSystem particle;
+
 
     private void Awake()
     {
@@ -32,6 +38,12 @@ public class GameManager : MonoBehaviour
             {
                 level = Random.Range(0, 4);
             }
+        }
+
+        if (PlayerPrefs.HasKey(Str.GameStart))
+        {
+            statusGame = StatusGame.Play;
+            _actionPanelManager.OpenPanels(2);
         }
 
         _startBtn.onClick.AddListener(() =>
@@ -48,5 +60,11 @@ public class GameManager : MonoBehaviour
         level++;
         levelText++;
         PlayerPrefs.SetInt(Str.Level, levelText);
+    }
+
+    public void AddMoneyForPanel()
+    {
+        money++;
+        texts.ForEach(x => x.text = $"{money}");
     }
 }

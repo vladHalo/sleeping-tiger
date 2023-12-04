@@ -1,5 +1,6 @@
 using Core.Scripts.Bird;
 using Lean.Pool;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace Core.Scripts.Player.Bullet
@@ -33,6 +34,11 @@ namespace Core.Scripts.Player.Bullet
                 AudioManager.instance.PlaySoundEffect(SoundType.DeadAnimal);
                 _gameManager.animalCountView.AddCount();
                 _gameManager.storeLogic.AddMoney(1);
+
+                moveBird._particle.gameObject.SetActive(false);
+                _gameManager.particle.transform.position = moveBird.transform.position;
+                _gameManager.particle.Play();
+                _gameManager.AddMoneyForPanel();
                 LeanPool.Despawn(moveBird.gameObject);
                 LeanPool.Despawn(gameObject);
             }

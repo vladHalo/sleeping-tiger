@@ -34,7 +34,7 @@ namespace Core.Scripts.Tiger.States
         public void UpdateState()
         {
         }
-
+        
         private IEnumerator Lose()
         {
             yield return new WaitForSeconds(1.5f);

@@ -11,6 +11,7 @@ namespace Core.Scripts.Player
         [SerializeField] private Transform _aim;
         [SerializeField] private FactoryBullet _factoryBullet;
         [SerializeField] private InputControllerView _input;
+        [SerializeField] private ParticleSystem _particle;
 
         private void Start()
         {
@@ -19,6 +20,7 @@ namespace Core.Scripts.Player
 
         private void Shot(float power)
         {
+            _particle.Play();
             _factoryBullet.Spawn(_aim, power);
             AudioManager.instance.PlaySoundEffect(SoundType.Shot);
         }

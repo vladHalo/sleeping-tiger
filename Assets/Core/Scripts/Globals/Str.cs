@@ -9,4 +9,8 @@ public class Str
     public const string Main = "Main";
     public const string Level = "Level";
     public const string Money = "Money";
+    public const string DoublePoint = "DoublePoint";
+    public const string AddHP = "AddHP";
+    public const string Ability = "Ability";
+    public const string GameStart = "GameStart";
 }

@@ -132,12 +132,12 @@ TextureImporter:
       name: Power_2
       rect:
         serializedVersion: 2
-        x: 22
-        y: 248
-        width: 247
-        height: 143
+        x: 8
+        y: 419
+        width: 346
+        height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: Power_4
       rect:
         serializedVersion: 2
-        x: 317
-        y: 30
-        width: 338
-        height: 384
+        x: 457
+        y: 13
+        width: 346
+        height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -166,6 +166,48 @@ TextureImporter:
       bones: []
       spriteID: 51e1d0f4f65cf044e95647ca93ab84bd
       internalID: -952528607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_0
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 419
+        width: 346
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b82beddc03d9ae4abf2c03fc336f541
+      internalID: -2034005054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ability_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 19
+        width: 346
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1bdbdddf380a344fa0c3a45c2ec2eee
+      internalID: -1139653247
       vertices: []
       indices: 
       edges: []
@@ -181,6 +223,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Ability_0: -2034005054
+      Ability_1: -1139653247
       Power_0: -235410327
       Power_1: 701785050
       Power_2: -1903301146

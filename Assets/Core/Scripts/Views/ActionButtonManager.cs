@@ -9,8 +9,6 @@ namespace Core.Scripts.Views
 {
     public class ActionButtonManager : MonoBehaviour
     {
-        public Action ActionPressButton;
-
         [SerializeField] private List<ButtonModel> _buttonsList;
         private readonly string[] Prefixs = { "-Image", "-Color", "-Text" };
 
@@ -20,10 +18,40 @@ namespace Core.Scripts.Views
             {
                 if (item.button != null)
                 {
-                    item.button.onClick.AddListener(() => { ChangeButton(index); });
+                    item.button.onClick.AddListener(() => { ChangeButtons(index); });
                 }
             });
             StartChangeButton();
+        }
+
+        public void ChangeButtons(int number)
+        {
+            _buttonsList.ForEach((x, index) => { RefreshButton(index); });
+            ChangeButton(number);
+        }
+
+        private void RefreshButton(int index)
+        {
+            if (_buttonsList[index].image != null && _buttonsList[index].sprites.Count >= 2)
+            {
+                _buttonsList[index].image.sprite = _buttonsList[index].sprites[0];
+                if (!string.IsNullOrEmpty(_buttonsList[index].nameSave))
+                    ES3.Save(_buttonsList[index].nameSave + Prefixs[0], 0);
+            }
+
+            if (_buttonsList[index].image != null && _buttonsList[index].colors.Count >= 2)
+            {
+                _buttonsList[index].image.color = _buttonsList[index].colors[0];
+                if (!string.IsNullOrEmpty(_buttonsList[index].nameSave))
+                    ES3.Save(_buttonsList[index].nameSave + Prefixs[1], 0);
+            }
+
+            if (_buttonsList[index].text != null && _buttonsList[index].texts.Count >= 2)
+            {
+                _buttonsList[index].text.text = _buttonsList[index].texts[0];
+                if (!string.IsNullOrEmpty(_buttonsList[index].nameSave))
+                    ES3.Save(_buttonsList[index].nameSave + Prefixs[2], 0);
+            }
         }
 
         private void ChangeButton(int index)
@@ -51,8 +79,6 @@ namespace Core.Scripts.Views
                 if (!string.IsNullOrEmpty(_buttonsList[index].nameSave))
                     ES3.Save(_buttonsList[index].nameSave + Prefixs[2], number);
             }
-
-            ActionPressButton?.Invoke();
         }
 
         private void StartChangeButton()

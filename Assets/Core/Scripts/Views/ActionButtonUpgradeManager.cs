@@ -36,6 +36,11 @@ namespace Core.Scripts.Views
 
         public void NextStep(int index)
         {
+            if (_buttonsList[index].step >= _buttonsList[index].images.Count)
+            {
+                return;
+            }
+
             _buttonsList[index].images[_buttonsList[index].step].sprite = _buttonsList[index].sprite;
             _buttonsList[index].step++;
             if (!string.IsNullOrEmpty(_buttonsList[index].nameSave))
@@ -43,8 +48,11 @@ namespace Core.Scripts.Views
             if (_buttonsList[index].step >= _buttonsList[index].images.Count)
             {
                 _buttonsList[index].button.interactable = false;
+                _buttonsList[index].priceText.gameObject.SetActive(false);
             }
         }
+
+        public void ChangePriceText(int index, int price) => _buttonsList[index].priceText.text = $"{price}";
 
         private void StartChangeButton()
         {
@@ -65,7 +73,8 @@ namespace Core.Scripts.Views
 
                 if (index >= t.images.Count)
                 {
-                    _buttonsList[index].button.interactable = false;
+                    t.button.interactable = false;
+                    t.priceText.gameObject.SetActive(false);
                 }
             }
         }
@@ -74,9 +83,10 @@ namespace Core.Scripts.Views
         private class ButtonModel
         {
             public string nameSave;
-            [HideInInspector] public int step;
+            public int step;
             public Button button;
             public Sprite sprite;
+            [ShowIf("ButtonSpriteNotNull")] public Text priceText;
             [ShowIf("ButtonSpriteNotNull")] public List<Image> images;
 
             private bool ButtonSpriteNotNull()

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Core.Scripts.Views;
 using Sirenix.Utilities;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Core.Scripts.Store
 {
@@ -11,9 +10,8 @@ namespace Core.Scripts.Store
         public ActionButtonUpgradeManager ActionButtonUpgradeManager;
         public ActionPanelManager ActionPanelManager;
         [SerializeField] private StoreMoney _storeMoney;
-        [SerializeField] private int _pricesBuy;
+        [SerializeField] private List<int> _pricesBuy;
         [SerializeField] private List<int> _prices;
-        [SerializeField] private List<Text> _pricesText;
 
         public void Start()
         {
@@ -21,7 +19,7 @@ namespace Core.Scripts.Store
             ActionButtonUpgradeManager.AddListener(CheckMoney);
             ActionPanelManager.AddListener(CheckMoneyBuy);
 
-            _pricesText.ForEach((x, index) => { x.text = $"{_prices[index]}"; });
+            _prices.ForEach((x, index) => { ActionButtonUpgradeManager.ChangePriceText(index, _prices[index]); });
         }
 
         public void AddMoney(int count) => _storeMoney.Add(count);
@@ -31,21 +29,24 @@ namespace Core.Scripts.Store
             if (_storeMoney.CanMinus(_prices[index]))
             {
                 ActionButtonUpgradeManager.NextStep(index);
+                ActionButtonUpgradeManager.ChangePriceText(index, _prices[index]);
             }
             else
             {
+                StartCoroutine(_storeMoney.DelayFade());
                 Debug.Log("Не вистачає грошей!");
             }
         }
 
         public void CheckMoneyBuy(int index)
         {
-            if (_storeMoney.CanMinus(_pricesBuy))
+            if (_storeMoney.CanMinus(_pricesBuy[index]))
             {
                 ActionPanelManager.GetMethod().Invoke(index);
             }
             else
             {
+                StartCoroutine(_storeMoney.DelayFade());
                 Debug.Log("Не вистачає грошей!");
             }
         }
