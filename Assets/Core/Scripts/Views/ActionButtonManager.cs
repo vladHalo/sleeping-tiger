@@ -9,6 +9,7 @@ namespace Core.Scripts.Views
 {
     public class ActionButtonManager : MonoBehaviour
     {
+        [SerializeField] private bool _isAbility;
         [SerializeField] private List<ButtonModel> _buttonsList;
         private readonly string[] Prefixs = { "-Image", "-Color", "-Text" };
 
@@ -18,7 +19,10 @@ namespace Core.Scripts.Views
             {
                 if (item.button != null)
                 {
-                    item.button.onClick.AddListener(() => { ChangeButtons(index); });
+                    if (_isAbility)
+                        item.button.onClick.AddListener(() => { ChangeButtons(index); });
+                    else
+                        item.button.onClick.AddListener(() => { ChangeButton(index); });
                 }
             });
             StartChangeButton();

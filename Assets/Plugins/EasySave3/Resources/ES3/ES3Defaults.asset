@@ -30,6 +30,7 @@ MonoBehaviour:
     serializationDepthLimit: 64
     assemblyNames:
     - Zenject
+    - Assembly-CSharp-firstpass
     - EasySave3
     - CW.Common
     - Assembly-CSharp
@@ -42,7 +43,6 @@ MonoBehaviour:
     - Lofelt.NiceVibrations
     - ColoredHeaderCreator
     - HierarchyIcons
-    - Assembly-CSharp-firstpass
     - Sirenix.OdinInspector.CompatibilityLayer.Editor
     - ColoredHeaderCreator.Editor
     - ToonyColorsPro.Editor
